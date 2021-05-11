@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Form({ Login, emailError, passError, emailErrorChanger, passErrorChanger }) {
+function LogForm({ Login, emailError, passError, emailErrorChanger, passErrorChanger }) {
     const [details, setDetails] = useState({ name: "", email: "", password: "" });
 
     const submitHandler = e => {
@@ -31,4 +31,4 @@ function Form({ Login, emailError, passError, emailErrorChanger, passErrorChange
     )
 }
 
-export default Form
+export default LogForm

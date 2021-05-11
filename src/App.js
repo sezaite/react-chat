@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import Form from './components/Form';
 import { validEmail, validPassword } from './components/Regex.js';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import Account from './components/Account';
+import LogForm from './components/LogForm';
 
 
 function App() {
@@ -11,14 +14,11 @@ function App() {
   const Login = details => {
     if (!validEmail.test(details.email)) {
       setEmailError(true);
-      console.log('wrong email');
     }
     if (!validPassword.test(details.password)) {
       setPassError(true);
-      console.log('wrong pass');
     }
     if (!passError && !emailError) {
-      console.log('details correct');
       setUser({
         name: details.name,
         email: details.email,
@@ -40,23 +40,30 @@ function App() {
 
   }
 
-  return (
-    <div className="App">
-      {(user.name !== "" && user.email !== "" && user.password !== "" && !emailError && !passError) ?
-        (<>
-          <h3>Logged as <span>{user.name}</span></h3>
-          <button onClick={Logout}>Exit</button>
-        </>
-        )
-        :
-        (
+  if (user.name === "" || user.email === "" || user.password === "" || emailError || passError) {
+    return (
+      <>
+        <LogForm Login={Login} emailError={emailError} passError={passError} passErrorChanger={setEmailError} emailErrorChanger={setPassError} />
+      </>
+    )
+  }
 
-          <>
-            <Form Login={Login} emailError={emailError} passError={passError} passErrorChanger={setEmailError} emailErrorChanger={setPassError} />
-          </>
-        )
-      }
-    </div>
+  return (
+    <Router>
+      <div className="chat-app">
+        <Switch>
+          <Route path="/">
+            <Dashboard Logout={Logout} user={user} />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route path="/account">
+            <Account Logout={Logout} user={user} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+
   )
 }
 
