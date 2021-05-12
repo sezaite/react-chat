@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { validEmail, validPassword } from './components/Regex.js';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Account from './components/Account';
 import LogForm from './components/LogForm';
@@ -52,7 +52,7 @@ function App() {
     <Router>
       <div className="chat-app">
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Dashboard Logout={Logout} user={user} />
           </Route>
         </Switch>
