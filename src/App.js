@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     getData().then(data => {
-      setMsgList(data);
+      setMsgList(data.messages);
     }).catch(err => {
       console.log(err);
     });
