@@ -1,0 +1,14 @@
+.btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: solid 1px $accent-color;
+    color: $accent-color;
+    transition: all 0.5s;
+}
+
+.btn:hover {
+    background-color: $accent-color;
+    color: $main-color;
+    cursor: pointer;
+    transform: scale(0.98);
+}
