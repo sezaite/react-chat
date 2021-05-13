@@ -4,13 +4,14 @@ import Nav from './Nav';
 import Messages from './Messages';
 import TextForm from './TextForm';
 
-function Dashboard({ Logout, user, messages }) {
+function Dashboard({ Logout, user, messages, addMessage }) {
     console.log(messages);
     return (
         <>
             <Nav Logout={Logout} user={user} />
             <Messages messages={messages} />
-            <TextForm />
+
+            <TextForm addMessage={addMessage} />
         </>
     )
 }
