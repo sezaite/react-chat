@@ -1,3 +1,13 @@
+//3rd party SCSS
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400&display=swap');
+
+//main SCSS
 @import './sass/reset';
 @import './sass/custom';
 @import './sass/variables';
+
+// component SCSS
+@import './components/dashboard/dashboard';
+@import './components/login/login';
+@import './components/navigation/nav';
+@import './components/profile/profile';

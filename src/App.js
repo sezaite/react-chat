@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { validEmail, validPassword } from './components/Regex.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import Account from './components/Account';
-import LogForm from './components/LogForm';
+import Dashboard from './components/dashboard/Dashboard';
+import Account from './components/profile/Account';
+import LogForm from './components/login/LogForm';
 import './App.scss';
 
 function App() {
@@ -13,8 +13,6 @@ function App() {
   const [msgList, setMsgList] = useState(null);
   const dataURL = "https://api.jsonbin.io/b/609bcbbce0aabd6e191ce3a4/2";
   const userKey = "$2b$10$VYt99Wh61wdDtH0nYhkIMeFQsiSCDYfcwQinNCj9cHUvLfLeZcp0.";
-
-
 
   const addMessage = message => {
     const newMessage = { "id": msgList.length + 1, "user": user.name, "text": message };
