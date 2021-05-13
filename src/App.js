@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Account from './components/Account';
 import LogForm from './components/LogForm';
+import './App.scss';
 
 function App() {
   const [user, setUser] = useState({ name: "", email: "", password: "" });
@@ -13,9 +14,22 @@ function App() {
   const dataURL = 'https://api.jsonbin.io/b/609bcbbce0aabd6e191ce3a4/2';
   const userKey = "$2b$10$VYt99Wh61wdDtH0nYhkIMeFQsiSCDYfcwQinNCj9cHUvLfLeZcp0.";
 
+
+
+  const addMessage = message => {
+    const newMessage = { "id": msgList.length + 1, "user": user.name, "text": message };
+    setMsgList([...msgList, newMessage]);
+    updateData(newMessage).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
   useEffect(() => {
     getData().then(data => {
       setMsgList(data.messages);
+      console.log(msgList);
     }).catch(err => {
       console.log(err);
     });
@@ -33,6 +47,33 @@ function App() {
     });
     const data = await response.json();
     return data;
+  }
+
+  const updateData = async (newMessage) => {
+    const response = await fetch(dataURL, {
+      method: "PUT",
+      headers: {
+        "X-Master-Key": userKey,
+        "Content-Type": "application/json",
+        "X-Bin-Versioning": true
+      },
+      body: JSON.stringify(newMessage)
+    });
+    const data = await response.json();
+    return data;
+
+    // let req = new XMLHttpRequest();
+
+    // req.onreadystatechange = () => {
+    //   if (req.readyState == XMLHttpRequest.DONE) {
+    //     console.log(req.responseText);
+    //   }
+    // };
+
+    // req.open("PUT", dataURL, true);
+    // req.setRequestHeader("Content-Type", "application/json");
+    // req.setRequestHeader("X-Master-Key", userKey);
+    // req.send(JSON.stringify(newMessage));
   }
 
 
@@ -79,7 +120,7 @@ function App() {
       <div className="chat-app">
         <Switch>
           <Route exact path="/">
-            <Dashboard Logout={Logout} user={user} messages={msgList} />
+            <Dashboard Logout={Logout} user={user} messages={msgList} addMessage={addMessage} />
           </Route>
         </Switch>
         <Switch>
