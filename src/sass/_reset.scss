@@ -4,10 +4,14 @@ body * {
   padding: 0;
   vertical-align: top;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-  color: #a09f9f;
+  font-family: 'Roboto Mono', monospace;
 }
 
 body {
-  background-color: black;
+  height: 100vh;
+}
+
+body > div {
+  height: 100%;
+  width: 100%;
 }

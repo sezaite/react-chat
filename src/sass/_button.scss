@@ -2,8 +2,9 @@
     padding: 10px 20px;
     background-color: transparent;
     border: solid 1px $accent-color;
-    color: $accent-color;
+    color: $main-color;
     transition: all 0.5s;
+    margin: 20px 0;
 }
 
 .btn:hover {
