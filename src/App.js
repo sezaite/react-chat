@@ -11,23 +11,38 @@ function App() {
   const [emailError, setEmailError] = useState(false);
   const [passError, setPassError] = useState(false);
   const [msgList, setMsgList] = useState(null);
-  const dataURL = "https://api.jsonbin.io/b/609bcbbce0aabd6e191ce3a4/2";
+  const dataURL = "https://api.jsonbin.io/b/609e4af91ad3151d4b2f8aed";
   const userKey = "$2b$10$VYt99Wh61wdDtH0nYhkIMeFQsiSCDYfcwQinNCj9cHUvLfLeZcp0.";
 
   const addMessage = message => {
     const newMessage = { "id": msgList.length + 1, "user": user.name, "text": message };
     setMsgList([...msgList, newMessage]);
-    updateData(newMessage).then(res => {
+    updateData().then(res => {
       console.log(res);
     }).catch(err => {
       console.log(err);
     });
   }
 
+  const updateData = async () => {
+    const response = await fetch(dataURL, {
+      method: "PUT",
+      headers: {
+        "X-Master-Key": userKey,
+        "Content-Type": "application/json",
+        // "X-Bin-Versioning": false
+      },
+      body: JSON.stringify({ 'messages': msgList })
+    });
+    const data = await response.json();
+    return data;
+  }
+
+
   useEffect(() => {
     getData().then(data => {
       setMsgList(data.messages);
-      console.log(msgList);
+      // console.log(msgList);
     }).catch(err => {
       console.log(err);
     });
@@ -36,7 +51,7 @@ function App() {
 
 
   const getData = async () => {
-    const response = await fetch(dataURL, {
+    const response = await fetch(dataURL + "/latest", {
       method: "GET",
       headers: {
         "X-Master-Key": userKey,
@@ -47,32 +62,19 @@ function App() {
     return data;
   }
 
-  const updateData = async (newMessage) => {
-    const response = await fetch(dataURL, {
-      method: "PUT",
-      headers: {
-        "X-Master-Key": userKey,
-        "Content-Type": "application/json",
-        "X-Bin-Versioning": true
-      },
-      body: JSON.stringify(newMessage)
-    });
-    const data = await response.json();
-    return data;
+  // let req = new XMLHttpRequest();
 
-    // let req = new XMLHttpRequest();
+  // req.onreadystatechange = () => {
+  //   if (req.readyState == XMLHttpRequest.DONE) {
+  //     console.log(req.responseText);
+  //   }
+  // };
 
-    // req.onreadystatechange = () => {
-    //   if (req.readyState == XMLHttpRequest.DONE) {
-    //     console.log(req.responseText);
-    //   }
-    // };
+  // req.open("PUT", dataURL, true);
+  // req.setRequestHeader("Content-Type", "application/json");
+  // req.setRequestHeader("X-Master-Key", userKey);
+  // req.send(JSON.stringify(newMessage));
 
-    // req.open("PUT", dataURL, true);
-    // req.setRequestHeader("Content-Type", "application/json");
-    // req.setRequestHeader("X-Master-Key", userKey);
-    // req.send(JSON.stringify(newMessage));
-  }
 
 
 
