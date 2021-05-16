@@ -7,12 +7,11 @@ import TextForm from './TextForm';
 function Dashboard({ Logout, user, messages, addMessage }) {
     // console.log(messages);
     return (
-        <>
+        <div className="dashboard">
             <Nav Logout={Logout} user={user} />
-            <Messages messages={messages} />
-
+            <Messages messages={messages} user={user} />
             <TextForm addMessage={addMessage} />
-        </>
+        </div>
     )
 }
 

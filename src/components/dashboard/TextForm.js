@@ -8,10 +8,16 @@ function TextForm({ addMessage }) {
         addMessage(message);
     }
 
+    function autoGrow(element) {
+        element.style.height = "5px";
+        element.style.height = (element.scrollHeight) + "px";
+    }
+
     return (
-        <form>
-            <textarea name="message-area" id="message-area" cols="50" rows="8" placeholder="Say something!" onChange={e => setMessage(e.target.value)} value={message}></textarea>
+        <form className="message-input">
+            <textarea name="message-area" id="message-area" placeholder="Say something!" onChange={e => setMessage(e.target.value)} value={message} onInput={e => autoGrow(e.target)}></textarea>
             <input type="submit" value="Send" onClick={handleMessageSubmission} />
+
         </form>
     )
 }
