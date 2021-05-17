@@ -3,6 +3,7 @@ import { validEmail, validPassword } from './components/Regex.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './components/dashboard/Dashboard';
 import Account from './components/profile/Account';
+import Edit from './components/edit/Edit';
 import LogForm from './components/login/LogForm';
 import './App.scss';
 
@@ -49,9 +50,10 @@ function App() {
 
   }, []);
 
+  // + "/latest"
 
   const getData = async () => {
-    const response = await fetch(dataURL + "/latest", {
+    const response = await fetch(dataURL, {
       method: "GET",
       headers: {
         "X-Master-Key": userKey,
@@ -61,22 +63,6 @@ function App() {
     const data = await response.json();
     return data;
   }
-
-  // let req = new XMLHttpRequest();
-
-  // req.onreadystatechange = () => {
-  //   if (req.readyState == XMLHttpRequest.DONE) {
-  //     console.log(req.responseText);
-  //   }
-  // };
-
-  // req.open("PUT", dataURL, true);
-  // req.setRequestHeader("Content-Type", "application/json");
-  // req.setRequestHeader("X-Master-Key", userKey);
-  // req.send(JSON.stringify(newMessage));
-
-
-
 
   const Login = details => {
     if (!validEmail.test(details.email)) {
@@ -90,13 +76,11 @@ function App() {
         name: details.name,
         email: details.email,
         password: details.password
-
       });
     }
   }
 
   const Logout = () => {
-
     setUser({
       name: "",
       email: "",
@@ -104,7 +88,6 @@ function App() {
     });
     setEmailError(false);
     setPassError(false);
-
   }
 
   if (user.name === "" || user.email === "" || user.password === "" || emailError || passError) {
@@ -126,6 +109,11 @@ function App() {
         <Switch>
           <Route path="/account">
             <Account Logout={Logout} user={user} />
+          </Route>
+        </Switch>
+        <Switch>
+          <Route path="/edit">
+            <Edit Logout={Logout} user={user} setUser={setUser} />
           </Route>
         </Switch>
       </div>

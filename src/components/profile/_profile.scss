@@ -1,0 +1,22 @@
+.chat-app {
+    height: 100%;
+
+    .profile-area {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        
+        .profile-window {
+            width: 420px;
+            text-align: center;
+            padding-bottom: 20px;
+            padding: 20px 0;
+            border: 2px solid darken($accent-color, 30%);
+            margin-top: 20px;
+
+      
+    }
+}
+
+}

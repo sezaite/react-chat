@@ -1,20 +1,39 @@
 .dashboard {
     color: $secondary-color;
-    display: grid;
-    place-items: center;
+    // display: grid;
+    // place-items: center;
     height: 100vh;
 
-
     ul.messages {
-        overflow-y: scroll;
-       
+        padding-top: 49px;
+        // overflow-y: scroll;
         background-color: lighten($main-color, 5%);
+
+        li {
+           display: flex;
+           width: 100%;
+        }
+
+        .currentName, .name {
+            margin: 6px 16px;
+            padding: 6px;
+            border-radius: 5px;
+            width: 100%;
+            background-color: lighten($main-color, 20%);
+        }
+
+        .currentName {
+            background-color: lighten($main-color, 10%);
+        }
     }
     .message-input {
         width: 100%;
         background-color: gainsboro;
         display: flex;
         align-items: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
 
 
         textarea{
@@ -23,6 +42,7 @@
             overflow: hidden;
             min-height: 50px;
             max-height: 100px;
+            overflow-y: scroll
         }
 
         input {
