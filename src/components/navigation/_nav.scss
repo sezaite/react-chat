@@ -13,7 +13,7 @@ nav {
     .left-nav{
         width: 40%;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         img {
             width: 40px;
@@ -35,7 +35,7 @@ nav {
     .right-nav{
         width: 60%;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
         *{
             margin: 0 20px;

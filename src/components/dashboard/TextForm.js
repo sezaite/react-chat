@@ -24,7 +24,7 @@ function TextForm({ addMessage }) {
 
     return (
         <form className="message-input">
-            <textarea name="message-area" id="message-area" placeholder="Say something!" onChange={e => setMessage(e.target.value)} onInput={e => autoGrow(e.target)} onKeyPress={e => handleKeyPress(e)}>{message}</textarea>
+            <textarea name="message-area" id="message-area" placeholder="Say something!" onChange={e => setMessage(e.target.value)} onInput={e => autoGrow(e.target)} onKeyPress={e => handleKeyPress(e)} value={message}></textarea>
             <input type="submit" value="Send" onClick={e => handleMessageSubmission(e)} />
 
         </form>

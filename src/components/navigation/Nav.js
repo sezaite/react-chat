@@ -11,8 +11,8 @@ function Nav({ user, Logout }) {
             </div>
             <div className="right-nav">
                 <h3>Logged as <span>{user.name}</span></h3>
-                <Link to="/account" class="btn btn-nav">Account</Link>
-                <Link to='/' onClick={Logout} class="btn btn-nav">Exit</Link>
+                <Link to="/account" className="btn btn-nav">Account</Link>
+                <Link to='/' onClick={Logout} className="btn btn-nav">Exit</Link>
                 <img src={faker.image.avatar()} alt="avatar" />
             </div>
         </nav>

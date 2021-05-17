@@ -8,7 +8,8 @@ import LogForm from './components/login/LogForm';
 import './App.scss';
 
 function App() {
-  const [user, setUser] = useState({ name: "", email: "", password: "" });
+  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")) || { name: "", email: "", password: "" });
+  console.log(user);
   const [emailError, setEmailError] = useState(false);
   const [passError, setPassError] = useState(false);
   const [msgList, setMsgList] = useState(null);
@@ -39,11 +40,13 @@ function App() {
     return data;
   }
 
+  useEffect(() => {
+    sessionStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
   useEffect(() => {
     getData().then(data => {
       setMsgList(data.messages);
-      // console.log(msgList);
     }).catch(err => {
       console.log(err);
     });
@@ -88,6 +91,7 @@ function App() {
     });
     setEmailError(false);
     setPassError(false);
+    sessionStorage.clear();
   }
 
   if (user.name === "" || user.email === "" || user.password === "" || emailError || passError) {
