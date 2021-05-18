@@ -25,18 +25,14 @@ function App() {
 
   }, []);
 
-  useEffect(() => {
+  const addMessage = message => {
+    const newMessage = { "id": msgList.length + 1, "user": user.name, "text": message };
+    setMsgList([...msgList, newMessage]);
     updateData().then(res => {
       console.log(res);
     }).catch(err => {
       console.log(err);
     });
-  }, [msgList])
-
-
-  const addMessage = message => {
-    const newMessage = { "id": msgList.length + 1, "user": user.name, "text": message };
-    setMsgList([...msgList, newMessage]);
   }
 
   const updateData = async () => {

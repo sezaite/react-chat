@@ -4,9 +4,12 @@ function TextForm({ addMessage }) {
     const [message, setMessage] = useState("");
 
     const handleMessageSubmission = (e) => {
+
         e.preventDefault();
-        // e.target.value = "";
+        console.log(e);
         document.querySelector(".message-input textarea").value = "";
+
+        console.log(document.querySelector(".message-input textarea"));
         addMessage(message);
     }
 
@@ -22,9 +25,9 @@ function TextForm({ addMessage }) {
     }
 
     return (
-        <form className="message-input">
+        <form className="message-input" onSubmit={e => handleMessageSubmission(e)}>
             <textarea name="message-area" id="message-area" placeholder="Say something!" onChange={e => setMessage(e.target.value)} onInput={e => autoGrow(e.target)} onKeyPress={e => handleKeyPress(e)} value={message}></textarea>
-            <input type="submit" value="Send" onClick={e => handleMessageSubmission(e)} />
+            <input type="submit" value="Send" />
 
         </form>
     )
