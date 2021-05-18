@@ -4,52 +4,55 @@
     // place-items: center;
     height: 100vh;
 
-    ul.messages {
-        padding-top: 49px;
-        // overflow-y: scroll;
-        background-color: lighten($main-color, 5%);
-
-        li {
-           display: flex;
-           width: 100%;
-        }
-
-        .currentName, .name {
-            margin: 6px 16px;
-            padding: 6px;
-            border-radius: 5px;
-            width: 100%;
-            background-color: lighten($main-color, 20%);
-        }
-
-        .currentName {
-            background-color: lighten($main-color, 10%);
-        }
-    }
-    .message-input {
-        width: 100%;
-        background-color: gainsboro;
+    .chat-window {
+        height: 100vh;
         display: flex;
-        align-items: center;
-        position: fixed;
-        bottom: 0;
-        left: 0;
+        flex-direction: column;
 
-
-        textarea{
+        ul.messages {
+            padding-top: 49px;
+            overflow-y: scroll;
+            background-color: lighten($main-color, 5%);
             flex-grow: 1;
-            resize: none;
-            overflow: hidden;
-            min-height: 50px;
-            max-height: 100px;
-            overflow-y: scroll
-        }
 
-        input {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-        }
-    }
+            li {
+            display: flex;
+            width: 100%;
+            }
 
+            .currentName, .name {
+                margin: 6px 16px;
+                padding: 6px;
+                border-radius: 5px;
+                width: 100%;
+                background-color: lighten($main-color, 20%);
+            }
+
+            .currentName {
+                background-color: lighten($main-color, 10%);
+            }
+        }
+        .message-input {
+            width: 100%;
+            background-color: gainsboro;
+            display: flex;
+            align-items: center;
+
+
+            textarea{
+                flex-grow: 1;
+                resize: none;
+                overflow: hidden;
+                min-height: 50px;
+                max-height: 100px;
+                overflow-y: scroll
+            }
+
+            input {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+        }
+  }
 }

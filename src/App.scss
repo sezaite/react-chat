@@ -3,9 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 //main SCSS
+@import './sass/variables';
 @import './sass/reset';
 @import './sass/custom';
-@import './sass/variables';
+
 
 @import './sass/button';
 

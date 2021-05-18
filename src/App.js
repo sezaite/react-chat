@@ -9,12 +9,21 @@ import './App.scss';
 
 function App() {
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")) || { name: "", email: "", password: "" });
-  console.log(user);
   const [emailError, setEmailError] = useState(false);
   const [passError, setPassError] = useState(false);
   const [msgList, setMsgList] = useState(null);
+  console.log(msgList);
   const dataURL = "https://api.jsonbin.io/b/609e4af91ad3151d4b2f8aed";
   const userKey = "$2b$10$VYt99Wh61wdDtH0nYhkIMeFQsiSCDYfcwQinNCj9cHUvLfLeZcp0.";
+
+  useEffect(() => {
+    getData().then(data => {
+      setMsgList(data.messages);
+    }).catch(err => {
+      console.log(err);
+    });
+
+  }, []);
 
   const addMessage = message => {
     const newMessage = { "id": msgList.length + 1, "user": user.name, "text": message };
@@ -43,15 +52,6 @@ function App() {
   useEffect(() => {
     sessionStorage.setItem("user", JSON.stringify(user));
   }, [user]);
-
-  useEffect(() => {
-    getData().then(data => {
-      setMsgList(data.messages);
-    }).catch(err => {
-      console.log(err);
-    });
-
-  }, []);
 
   // + "/latest"
 
@@ -94,7 +94,13 @@ function App() {
     sessionStorage.clear();
   }
 
-  if (user.name === "" || user.email === "" || user.password === "" || emailError || passError) {
+  if (msgList === null) {
+    return (
+      <h1 className="loader">Loading...</h1>
+    )
+  }
+
+  else if (msgList && user.name === "" || user.email === "" || user.password === "" || emailError || passError) {
     return (
       <>
         <LogForm Login={Login} emailError={emailError} passError={passError} passErrorChanger={setEmailError} emailErrorChanger={setPassError} />
