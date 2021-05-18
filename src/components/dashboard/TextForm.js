@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 
 function TextForm({ addMessage }) {
     const [message, setMessage] = useState("");
+    const [value, setValue] = useState(message || "");
 
     const handleMessageSubmission = (e) => {
-
         e.preventDefault();
-        console.log(e);
-        document.querySelector(".message-input textarea").value = "";
-
-        console.log(document.querySelector(".message-input textarea"));
-        addMessage(message);
+        setMessage(value);
+        addMessage(value);
+        setValue("");
     }
 
     const handleKeyPress = e => {
@@ -26,7 +24,7 @@ function TextForm({ addMessage }) {
 
     return (
         <form className="message-input" onSubmit={e => handleMessageSubmission(e)}>
-            <textarea name="message-area" id="message-area" placeholder="Say something!" onChange={e => setMessage(e.target.value)} onInput={e => autoGrow(e.target)} onKeyPress={e => handleKeyPress(e)} value={message}></textarea>
+            <textarea name="message-area" id="message-area" placeholder="Say something!" onChange={e => setValue(e.target.value)} onInput={e => autoGrow(e.target)} onKeyPress={e => handleKeyPress(e)} value={value}></textarea>
             <input type="submit" value="Send" />
 
         </form>

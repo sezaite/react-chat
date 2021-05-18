@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     getData().then(data => {
       setMsgList(data.messages);
-      document.querySelector('ul.messages').scrollIntoView(false);
+      // document.querySelector('ul.messages').scrollIntoView(false);
     }).catch(err => {
       console.log(err);
     });
