@@ -10,10 +10,10 @@
             overflow-y: scroll;
             overscroll-behavior-y: contain;
             scroll-snap-type: y proximity;
+            flex-grow: 1;
 
             ul.messages{
                 scroll-snap-align: end;
-
                 
                 li {
                     display: flex;

@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     getData().then(data => {
       setMsgList(data.messages);
-      // document.querySelector('.chat-window').scrollIntoView(false);
+      document.querySelector('ul.messages').scrollIntoView(false);
     }).catch(err => {
       console.log(err);
     });
@@ -37,7 +37,6 @@ function App() {
   const addMessage = message => {
     const newMessage = { "id": msgList.length + 1, "user": user.name, "text": message };
     setMsgList([...msgList, newMessage]);
-    // document.querySelector('.chat-window').scrollIntoView(false);
   }
 
   const updateData = async () => {
