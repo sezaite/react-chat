@@ -4,6 +4,7 @@ import Messages from './Messages';
 import TextForm from './TextForm';
 
 function Dashboard({ Logout, user, messages, addMessage }) {
+
     return (
         <div className="dashboard">
             <Nav Logout={Logout} user={user} />

@@ -8,7 +8,6 @@ function TextForm({ addMessage }) {
         // e.target.value = "";
         document.querySelector(".message-input textarea").value = "";
         addMessage(message);
-        console.log(e);
     }
 
     const handleKeyPress = e => {

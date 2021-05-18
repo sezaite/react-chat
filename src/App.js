@@ -12,27 +12,32 @@ function App() {
   const [emailError, setEmailError] = useState(false);
   const [passError, setPassError] = useState(false);
   const [msgList, setMsgList] = useState(null);
-  console.log(msgList);
   const dataURL = "https://api.jsonbin.io/b/609e4af91ad3151d4b2f8aed";
   const userKey = "$2b$10$VYt99Wh61wdDtH0nYhkIMeFQsiSCDYfcwQinNCj9cHUvLfLeZcp0.";
 
   useEffect(() => {
     getData().then(data => {
       setMsgList(data.messages);
+      // document.querySelector('.chat-window').scrollIntoView(false);
     }).catch(err => {
       console.log(err);
     });
 
   }, []);
 
-  const addMessage = message => {
-    const newMessage = { "id": msgList.length + 1, "user": user.name, "text": message };
-    setMsgList([...msgList, newMessage]);
+  useEffect(() => {
     updateData().then(res => {
       console.log(res);
     }).catch(err => {
       console.log(err);
     });
+  }, [msgList])
+
+
+  const addMessage = message => {
+    const newMessage = { "id": msgList.length + 1, "user": user.name, "text": message };
+    setMsgList([...msgList, newMessage]);
+    // document.querySelector('.chat-window').scrollIntoView(false);
   }
 
   const updateData = async () => {
@@ -100,7 +105,7 @@ function App() {
     )
   }
 
-  else if (msgList && user.name === "" || user.email === "" || user.password === "" || emailError || passError) {
+  else if (user.name === "" || user.email === "" || user.password === "" || emailError || passError) {
     return (
       <>
         <LogForm Login={Login} emailError={emailError} passError={passError} passErrorChanger={setEmailError} emailErrorChanger={setPassError} />

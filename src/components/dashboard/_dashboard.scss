@@ -1,58 +1,58 @@
-.dashboard {
+//dashboard>chatwindow>all-messages>messages
+.dashboard .chat-window {
     color: $secondary-color;
-    // display: grid;
-    // place-items: center;
     height: 100vh;
-
-    .chat-window {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-
-        ul.messages {
-            padding-top: 49px;
+    padding-top: 49px;
+    display: flex;
+    flex-direction: column;
+    
+        .scroll-container {
             overflow-y: scroll;
-            background-color: lighten($main-color, 5%);
+            overscroll-behavior-y: contain;
+            scroll-snap-type: y proximity;
+
+            ul.messages{
+                scroll-snap-align: end;
+
+                
+                li {
+                    display: flex;
+                    width: 100%;
+                    
+                    .currentName, .name {
+                        margin: 6px 16px;
+                        padding: 6px;
+                        border-radius: 5px;
+                        width: 100%;
+                        background-color: lighten($main-color, 20%);
+                    }
+                
+                    .currentName {
+                        background-color: lighten($main-color, 10%);
+                    }
+                }
+            }
+            
+    }
+    .message-input {
+        width: 100%;
+        background-color: gainsboro;
+        display: flex;
+        align-items: center;
+
+        textarea{
             flex-grow: 1;
-
-            li {
-            display: flex;
-            width: 100%;
-            }
-
-            .currentName, .name {
-                margin: 6px 16px;
-                padding: 6px;
-                border-radius: 5px;
-                width: 100%;
-                background-color: lighten($main-color, 20%);
-            }
-
-            .currentName {
-                background-color: lighten($main-color, 10%);
-            }
+            resize: none;
+            overflow: hidden;
+            min-height: 50px;
+            max-height: 100px;
+            overflow-y: scroll
         }
-        .message-input {
-            width: 100%;
-            background-color: gainsboro;
-            display: flex;
-            align-items: center;
 
-
-            textarea{
-                flex-grow: 1;
-                resize: none;
-                overflow: hidden;
-                min-height: 50px;
-                max-height: 100px;
-                overflow-y: scroll
-            }
-
-            input {
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-            }
+        input {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
         }
-  }
+    }
 }
