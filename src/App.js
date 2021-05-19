@@ -5,8 +5,8 @@ import Account from './components/profile/Account';
 import Edit from './components/edit/Edit';
 import LogForm from './components/login/LogForm';
 import './App.scss';
-import useValidPassword from './components/customHooks/useValidPassword';
-import useValidEmail from './components/customHooks/useValidEmail';
+import isValidPassword from './components/helpers/isValidPassword';
+import isValidEmail from './components/helpers/isValidEmail';
 
 function App() {
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")) || { name: "", email: "", password: "" });
@@ -69,10 +69,11 @@ function App() {
   }
 
   const Login = details => {
-    if (!useValidEmail(details.email)) {
+    if (!isValidEmail(details.email)) {
+      console.log('emailas neteisingas')
       setEmailError(true);
     }
-    if (!useValidPassword(details.pass)) {
+    if (!isValidPassword(details.password)) {
       setPassError(true);
     }
     if (!emailError && !passError) {
@@ -124,7 +125,7 @@ function App() {
         </Switch>
         <Switch>
           <Route path="/edit">
-            <Edit Logout={Logout} user={user} setUser={setUser} emailError={emailError} passError={passError} passErrorChanger={setEmailError} emailErrorChanger={setPassError} />
+            <Edit Logout={Logout} user={user} />
           </Route>
         </Switch>
       </div>

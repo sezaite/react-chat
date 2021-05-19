@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 
-function LogForm({ Login, emailError, passError, emailErrorChanger, passErrorChanger }) {
+function LogForm({ Login, emailError, passError }) {
     const [details, setDetails] = useState({ name: "", email: "", password: "" });
 
     const submitHandler = e => {
         e.preventDefault();
-        // emailErrorChanger(false);
         Login(details);
     }
     return (
         <div className="form-window">
-            <form onSubmit={submitHandler} autocomplete="nope">
+            <form onSubmit={submitHandler} autoComplete="nope">
                 <h2 className="form-header">Come and see</h2>
                 <h3 className="form-subheader">But maybe log in first?</h3>
                 {emailError || passError ? (
@@ -22,7 +21,7 @@ function LogForm({ Login, emailError, passError, emailErrorChanger, passErrorCha
                 <div className="form-body">
                     <div className="form-group">
                         <label htmlFor="name">Your name</label>
-                        <input type="name" autocomplete="nope" id="name" name="name" onChange={e => setDetails({ ...details, name: e.target.value })} value={details.name} />
+                        <input type="name" id="name" name="name" onChange={e => setDetails({ ...details, name: e.target.value })} value={details.name} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
