@@ -21,11 +21,11 @@ function LogForm({ Login, emailError, passError }) {
                 <div className="form-body">
                     <div className="form-group">
                         <label htmlFor="name">Your name</label>
-                        <input type="name" id="name" name="name" onChange={e => setDetails({ ...details, name: e.target.value })} value={details.name} />
+                        <input type="name" autoComplete="nope" id="name" name="name" onChange={e => setDetails({ ...details, name: e.target.value })} value={details.name} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
+                        <input type="email" autoComplete="nope" id="email" name="email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>

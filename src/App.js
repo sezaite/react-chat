@@ -125,7 +125,7 @@ function App() {
         </Switch>
         <Switch>
           <Route path="/edit">
-            <Edit Logout={Logout} user={user} />
+            <Edit Logout={Logout} user={user} setUser={setUser} />
           </Route>
         </Switch>
       </div>
