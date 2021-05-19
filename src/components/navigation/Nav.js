@@ -7,14 +7,14 @@ function Nav({ user, Logout, backBtn }) {
         <nav>
             <div className="left-nav">
                 <img src={faker.image.abstract()} alt="chat-logo" />
-                <h1>Chat Name</h1>
+                <h1>Matechat</h1>
             </div>
             <div className="right-nav">
                 <h3>Logged as <span>{user.name}</span></h3>
                 <Link to="/account" className="btn btn-nav">Account</Link>
                 <Link to='/' onClick={Logout} className="btn btn-nav">Exit</Link>
                 {backBtn && <Link to="/" className="btn btn-nav">Back to chat</Link>}
-                <img src={faker.image.avatar()} alt="avatar" />
+                {/* <img src={faker.image.avatar()} alt="avatar" /> */}
             </div>
         </nav>
     )

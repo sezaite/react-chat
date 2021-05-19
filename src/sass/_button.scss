@@ -11,11 +11,17 @@
 
 .btn:hover {
     background-color: $accent-color;
-    color: $main-color;
+    color: darken($main-color, 60%);
     cursor: pointer;
     transform: scale(0.98);
 }
 
 .btn-nav {
     padding: 5px 10px;
+}
+
+.btn.enter {
+    background-image: linear-gradient(to bottom right, darken($accent-color, 40%), $secondary-color);
+    border: 1px solid darken($accent-color, 40%);
+    box-shadow: 1px 1px 2px darken($accent-color, 40%);
 }
