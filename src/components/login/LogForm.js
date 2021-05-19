@@ -5,7 +5,7 @@ function LogForm({ Login, emailError, passError, emailErrorChanger, passErrorCha
 
     const submitHandler = e => {
         e.preventDefault();
-        emailErrorChanger(false);
+        // emailErrorChanger(false);
         Login(details);
     }
     return (

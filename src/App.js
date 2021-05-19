@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { validEmail, validPassword } from './components/Regex.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './components/dashboard/Dashboard';
 import Account from './components/profile/Account';
 import Edit from './components/edit/Edit';
 import LogForm from './components/login/LogForm';
 import './App.scss';
+import useValidPassword from './components/customHooks/useValidPassword';
+import useValidEmail from './components/customHooks/useValidEmail';
 
 function App() {
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")) || { name: "", email: "", password: "" });
@@ -68,13 +69,13 @@ function App() {
   }
 
   const Login = details => {
-    if (!validEmail.test(details.email)) {
+    if (!useValidEmail(details.email)) {
       setEmailError(true);
     }
-    if (!validPassword.test(details.password)) {
+    if (!useValidPassword(details.pass)) {
       setPassError(true);
     }
-    if (!passError && !emailError) {
+    if (!emailError && !passError) {
       setUser({
         name: details.name,
         email: details.email,
@@ -123,7 +124,7 @@ function App() {
         </Switch>
         <Switch>
           <Route path="/edit">
-            <Edit Logout={Logout} user={user} setUser={setUser} />
+            <Edit Logout={Logout} user={user} setUser={setUser} emailError={emailError} passError={passError} passErrorChanger={setEmailError} emailErrorChanger={setPassError} />
           </Route>
         </Switch>
       </div>

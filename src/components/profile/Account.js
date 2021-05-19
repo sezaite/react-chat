@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '../navigation/Nav';
 
-function Account({ Logout, user }) {
+function Account({ Logout, user, backToDashboard }) {
     return (
         <div className="profile-area">
-            <Nav Logout={Logout} user={user} />
+            <Nav Logout={Logout} user={user} backToDashboard={backToDashboard} backBtn={true} />
             <div className="profile-window">
                 <h1 className="profile-header">Profile info</h1>
                 <div className="profile-body">

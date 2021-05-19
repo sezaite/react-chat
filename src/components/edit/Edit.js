@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Nav from '../navigation/Nav';
 import { useHistory } from 'react-router-dom';
 
-function Edit({ Logout, user, setUser }) {
+function Edit({ Logout, user, setUser, emailError, passError }) {
 
     const [details, setDetails] = useState({ name: user.name, email: user.email, location: user.location ? user.location : "", about: user.about ? user.about : "" });
 
@@ -16,9 +16,12 @@ function Edit({ Logout, user, setUser }) {
 
     return (
         <div className="profile-area">
-            <Nav Logout={Logout} user={user} />
+            <Nav Logout={Logout} user={user} backBtn={true} />
             <div className="profile-window">
                 <h1 className="profile-header">Edit profile</h1>
+                <div className="form-errors">
+                    {/* {emailError && <h4 className="error">Your email is invalid</h4>} */}
+                </div>
                 <form onSubmit={e => { submitHandler(e) }} autoComplete="nope" className="profile-body">
                     <div className="profile-section">
                         <h4>User name:</h4>
