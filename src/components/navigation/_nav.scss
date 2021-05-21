@@ -5,8 +5,8 @@ nav {
     left: 0;
     width: 100%;
     height: 49px;
-    background-image: linear-gradient(to bottom right, $accent-color, $secondary-color);
-    // background-color: $third-color;
+    background-image: linear-gradient(to bottom right, darken($accent-color, 40%), $main-color);
+    box-shadow: 0px 2px 2px darken($main-color, 15%);
     align-items: center;
     justify-content: space-between;
 
@@ -20,15 +20,17 @@ nav {
             height: 40px;
             border-radius: 40%;
             margin: 0 20px;
-           
+            filter: grayscale(90%);
+            box-shadow: 1px 1px 1px $main-color;
         }
         h1 {
             font-family: $title-font;
             font-size: 36px;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: darken($accent-color, 20%);
-            text-shadow: 1px 0 darken($accent-color, 34%);
+            text-shadow:1px 0 $main-color;
+            color: $accent-color;
+            
         }
     }
 
@@ -37,14 +39,20 @@ nav {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+
         *{
             margin: 0 20px;
         }
-        img {
-            width: 40px;
-            height: 40px;
-            border-radius: 40%;
-           
+
+        h3 {
+            color: darken($accent-color, 20%);
+            white-space: nowrap;
+            font-size: 14px;
+
+            span {
+                color: $accent-color;
+                margin-left: 5px;
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 body {
-  background-color: $main-color;
+  background-color: darken($main-color, 5%);
   height: 100vh;
 }
 
@@ -31,3 +31,28 @@ a {
   .loader {
     color: $secondary-color; 
   }
+
+  label {
+    font-size: 18px;
+    color: $accent-color;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 6px;
+}
+input, textarea {
+    margin-bottom: 10px;
+    height: 20;
+    background-color: $main-color;
+    border: 1px solid darken($main-color, 5%);
+    outline: none;
+    color: $accent-color;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+textarea {
+    resize: none;
+}
+input:focus, textarea:focus{
+    background-color: darken($main-color, 5%);
+}

@@ -30,7 +30,7 @@ function Edit({ Logout, user, setUser }) {
     return (
         <div className="profile-area">
             <Nav Logout={Logout} user={user} backBtn={true} />
-            <div className="form-window">
+            <div className="form-window profile">
                 <form onSubmit={e => submitHandler(e)} autoComplete="nope">
                     <h1 className="form-header profile">Edit profile</h1>
                     {emailError || passError ? (

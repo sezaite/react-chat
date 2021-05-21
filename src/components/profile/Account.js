@@ -20,9 +20,7 @@ function Account({ Logout, user, backToDashboard }) {
                     {user.location && <div className="profile-section"><h4>User location</h4><p>{user.location}</p></div>}
                     {user.about && <div className="profile-section"><h4>About user</h4><p>{user.about}</p></div>}
                     <Link to="/edit" className="enter btn">Edit</Link>
-
                 </div>
-                {/* <Link onClick={Logout} to="/">Exit</Link> */}
             </div>
         </div>
     )
