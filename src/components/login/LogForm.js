@@ -18,7 +18,7 @@ function LogForm({ Login, emailError, passError }) {
                         {passError && <h4 className="error">Your password must contain at least 8 characters at least 1 numeric character</h4>}
                     </div>
                 ) : ""}
-                <div className="form-body">
+                <div className="form-body login">
                     <div className="form-group">
                         <label htmlFor="name">Your name</label>
                         <input type="name" autoComplete="nope" id="name" name="name" onChange={e => setDetails({ ...details, name: e.target.value })} value={details.name} />

@@ -4,7 +4,7 @@ import Nav from '../navigation/Nav';
 
 function Account({ Logout, user, backToDashboard }) {
     return (
-        <div className="profile-window">
+        <div className="profile-window profile">
             <Nav Logout={Logout} user={user} backToDashboard={backToDashboard} backBtn={true} />
             <div className="profile-box">
                 <h1 className="profile-header profile">Profile info</h1>
