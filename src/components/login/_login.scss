@@ -93,25 +93,23 @@
 }
 
 @media (max-width: 680px){
-    body .form-window {
-        form{
-            width: 300px;
+   .chat-app, #root {
 
-            .form-header {
-                font-size: 40px;
-            }
-
-            .form-subheader {
-                font-size: 20px;
-                letter-spacing: 4px;
-            }
-            .form-body  {
+        .form-window, .profile-window {
+        
+            form, .profile-box {
                 width: 300px;
 
-                label {
-                    margin-bottom: 5px;
+                .form-header, .profile-header {
+                    font-size: 40px;
                 }
+
+                .form-subheader {
+                    font-size: 20px;
+                    letter-spacing: 4px;
+                }
+
             }
-        }       
+        }
     }
 }

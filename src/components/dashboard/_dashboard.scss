@@ -57,16 +57,27 @@
             min-height: 50px;
             max-height: 100px;
             overflow-y: scroll;
+            border: 1px solid black;
+        }
+
+        textarea:focus {
+            background-color: lighten($main-color, 5%);
         }
 
         input {
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            box-shadow: $main-shadow;
+            border: 1px solid transparent;
+            box-shadow: 1px 1px 1px black;
+            transition: all 0.2s;
         }
         input:hover {
-
+            cursor: pointer;
+            background-color: lighten($main-color, 10%);
+            box-shadow: none;
+            border: 1px solid black;
+            color: lighten($accent-color, 10%);
         }
     }
 }

@@ -82,6 +82,7 @@ function App() {
         email: details.email,
         password: details.password
       });
+
     }
   }
 
