@@ -3,14 +3,11 @@ import { Link } from 'react-router-dom';
 // import faker from 'faker';
 
 function Nav({ user, Logout, backBtn }) {
-    const navLinks = document.querySelectorAll(".nav-links *");
-    const burger = document.querySelector('.burger');
-    const navRight = document.querySelector('.nav-links');
-
+    // const navLinks = document.querySelectorAll(".nav-links *");
     const toggleButton = () => {
-        burger.classList.toggle('toggle');
-        navRight.classList.toggle('nav-active');
-        navLinks.forEach((item, index) => {
+        document.querySelector('.burger').classList.toggle('toggle');
+        document.querySelector('.nav-links').classList.toggle('nav-active');
+        document.querySelectorAll(".nav-links *").forEach((item, index) => {
             if (item.style.animation) {
                 item.style.animation = ""
             } else {
@@ -35,8 +32,7 @@ function Nav({ user, Logout, backBtn }) {
                 {/* <img src={faker.image.avatar()} alt="avatar" /> */}
             </div>
 
-            <div className="burger active" onClick={() => toggleButton()}>
-
+            <div className="burger" onClick={() => toggleButton()}>
                 <div className="line1"></div>
                 <div className="line2"></div>
                 <div className="line3"></div>

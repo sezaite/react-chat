@@ -2,15 +2,14 @@ nav {
     position: fixed;
     display: flex;
     top: 0;
-    left: 0;
     width: 100%;
     height: 49px;
     background-image: linear-gradient(to bottom right, darken($accent-color, 40%), $main-color);
     box-shadow: 0px 2px 2px darken($main-color, 15%);
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 
-    .left-nav{
+    .left-nav {
         display: block;
         display: flex;
         justify-content: flex-start;
@@ -47,8 +46,9 @@ nav {
     }
 
     .nav-links{
+        width: 30%;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-around;
         align-items: center;
 
         *{
@@ -58,10 +58,9 @@ nav {
     }
 
         .burger {
-            margin-right: 20px;
             display: none;
 
-            .burger div{
+            div {
                 display: block;
                 width: 25px;
                 height: 3px;
@@ -75,36 +74,38 @@ nav {
     @media screen and (max-width: 680px) {
         body {
             overflow-x: hidden;
+
+            nav {
+
+                .nav-links {
+                    position: fixed;
+                    width: 60%;
+                    right: 0px;
+                    height: 92vh;
+                    top: 49px;
+                    background-color: $accent-color;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 50%;
+                    transform: translateX(100%);
+                    transition: transform 0.5s ease-in;
+                }
+                
+                .nav-links * {
+                    opacity: 0;
+                }
+                
+                .burger {
+                    display: block;
+                    cursor: pointer;
+                }
+                .nav-active {
+                    transform: translateX(0%);
+            }
         }
-        
-        .nav-links {
-            position: fixed;
-            right: 0px;
-            height: 92vh;
-            top: 8vh;
-            background-color: #5D4954;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 50%;
-            transform: translateX(100%);
-            transition: transform 0.5s ease-in;
-        }
-        
-        .nav-links * {
-            opacity: 0;
-        }
-        
-        .burger {
-            display: block;
-            cursor: pointer;
-        }
-    }
-    
-    .nav-active {
-            transform: translateX(0%);
-    }
-    
+    }    
+}   
     @keyframes navListFade {
         from {
             opacity: 0;
