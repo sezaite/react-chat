@@ -70,7 +70,6 @@ function App() {
 
   const Login = details => {
     if (!isValidEmail(details.email)) {
-      console.log('emailas neteisingas')
       setEmailError(true);
     }
     if (!isValidPassword(details.password)) {

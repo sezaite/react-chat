@@ -18,8 +18,6 @@ function LogForm({ Login, emailError, passError, passErrorChanger, emailErrorCha
                     <div className="form-errors">
                         {emailError && <h4 className="error">Your email is invalid</h4>}
                         {passError && <h4 className="error">Your password must contain at least 8 characters at least 1 numeric character</h4>}
-                        {/* {passErrorChanger(false)}
-                        {emailErrorChanger(false)} */}
                     </div>
                 ) : ""}
                 <div className="form-body login">
