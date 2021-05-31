@@ -20,23 +20,17 @@
                     
                     .currentName, .name {
                         margin: 6px 16px;
-                        // color: $accent-color;
                         padding: 10px;
-                        // border-radius: 10px;
                         width: 100%;
-                        // background-image: linear-gradient(to bottom right, darken($accent-color, 35%), lighten($main-color, 15%));
-                        // background-image: linear-gradient(to bottom right, darken($accent-color, 45%), darken($accent-color, 35%));
                         background-image: linear-gradient(to bottom right, darken($accent-color, 25%), darken($accent-color, 15%));
                         color: darken($accent-color, 75%);
                     }
                 
                     .currentName {
                         background-image: linear-gradient(to bottom right, darken($accent-color, 10%), darken($accent-color, 5%));
-                       
                     }
                 }
-            }
-            
+            }      
     }
 
     .scroll-container:first-child {

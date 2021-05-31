@@ -13,13 +13,12 @@ function App() {
   const [emailError, setEmailError] = useState(false);
   const [passError, setPassError] = useState(false);
   const [msgList, setMsgList] = useState(null);
-  const dataURL = "https://api.jsonbin.io/b/609e4af91ad3151d4b2f8aed";
+  const dataURL = "https://api.jsonbin.io/b/609e4af91ad3151d4b2f8aed/latest";
   const userKey = "$2b$10$VYt99Wh61wdDtH0nYhkIMeFQsiSCDYfcwQinNCj9cHUvLfLeZcp0.";
 
   useEffect(() => {
     getData().then(data => {
       setMsgList(data.messages);
-      // document.querySelector('ul.messages').scrollIntoView(false);
     }).catch(err => {
       console.log(err);
     });
@@ -42,7 +41,7 @@ function App() {
       headers: {
         "X-Master-Key": userKey,
         "Content-Type": "application/json",
-        // "X-Bin-Versioning": false
+        "X-Bin-Versioning": false
       },
       body: JSON.stringify({ 'messages': msgList })
     });
@@ -53,8 +52,6 @@ function App() {
   useEffect(() => {
     sessionStorage.setItem("user", JSON.stringify(user));
   }, [user]);
-
-  // + "/latest"
 
   const getData = async () => {
     const response = await fetch(dataURL, {

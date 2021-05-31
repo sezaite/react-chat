@@ -71,6 +71,19 @@ nav {
         }    
 }
 
+    @media screen and (max-width: 800px){
+       nav .nav-links *{
+            margin: 0 10px;
+        }
+
+        nav .logged {
+            font-size: 12px;
+        }
+        nav .left-nav h1 {
+            font-size: 30px;
+        }
+    }
+
     @media screen and (max-width: 680px) {
         body {
             overflow-x: hidden;
